@@ -16,12 +16,31 @@
 Allows pods to talk to each other WITHIN a cluster.
 
 ## NodePort
+=======
+
+### Why is NodePort Service not ideals sometimes?
+
+A NodePort Service will open the ports on every node in the cluster even if a user is not going to access it.
+For example:
+
+- there are 3 worker nodes in the cluster
+- a user wants to access an app, but there is only one active pod and it is on worker-3
+- the NodePort service opens the ports on all 3 nodes even though the users traffic is only going to worker-3
+
+- Also, the user needs to know the IP address of one of the 3 nodes to connect to.
+- if the user connects to worker-3s IP address and the node goes down, then connection is lost (entry point down).
+- even if the app was running fine on another nodes pods.
+
+## ClusterIP
+>>>>>>> 12c3a0e (updated notes)
 
 Allows external users to access pods inside the cluster.
 
 ## Load Balancer
 
-A production level ClusterIP. 
+This service adds a single stable IP address that users connect to when they want to access a pod.
+It's like a NodePort service except the users only need to connect to a single IP address and not worry about
+the IP addresses of multiple nodes or worry if the nodes will go down.
 
 # Basic networking with a service
 
