@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim # make a request for a PV
+metadata:
+  name: immich-library          # the helm chart references this name
+  namespace: immich
+spec:
+  accessModes:
+    - ReadWriteOnce             # RWO: one node mounts it read-write at a time
+  storageClassName: local-path  # k3s default the data lives on one worker's disk
+  resources:
+    requests:
+      storage: 10Gi     # the PV provided will be at least 10 gig in size       
