@@ -9,7 +9,7 @@ echo "Booting the cluster"
 # for each of the vm ids assign the value at index i to ID and NAME
 for i in "${!VM_IDS[@]}"; do       
     ID=${VM_IDS[$i]} 
-    sleep 10
+    sleep 22222222222222222222220
     NAME=${VM_NAMES[$i]}
 
 	
